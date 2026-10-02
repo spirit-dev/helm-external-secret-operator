@@ -7,6 +7,7 @@
 <!--TOC-->
 
 - [Installation process](#installation-process)
+- [External Secrets Operator](#external-secrets-operator)
 
 <!--TOC-->
 
@@ -21,3 +22,9 @@ The installation should be done in two steps:
 #> make dry-run ENV=<ENV>
 #> make install ENV=<ENV>
 ```
+
+## External Secrets Operator
+
+The [External Secrets Operator](https://external-secrets.io) reconciles Kubernetes `Secret` objects from external secret management systems (Cloudflare, Vault, GitLab CI variables, ...) using `SecretStore` and `ExternalSecret` resources.
+
+`ClusterSecretStore` definitions for this cluster will live in this chart's `helm/templates/` directory (per-environment, values-driven), once the secret backends are chosen. Until then the chart only deploys the operator itself.
