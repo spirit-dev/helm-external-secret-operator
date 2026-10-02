@@ -1,0 +1,25 @@
+apiVersion: v2
+name: external-secret-operator
+description: A Helm chart wrapping the External Secrets Operator
+home: https://github.com/external-secrets/external-secrets
+icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-logo.svg
+sources:
+  - https://github.com/external-secrets/external-secrets
+dependencies:
+  - name: external-secrets
+    repository: https://charts.external-secrets.io
+    version: 2.11.0
+
+type: application
+
+# renovate: datasource=helm depName=external-secrets repository=https://charts.external-secrets.io/
+version: 2.11.0
+
+# renovate: datasource=github-releases depName=external-secrets/external-secrets
+appVersion: v2.11.0
+
+keywords:
+  - kubernetes
+  - secrets
+  - external-secrets
+  - secret-management
