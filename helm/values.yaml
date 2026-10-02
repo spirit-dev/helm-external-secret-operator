@@ -1021,3 +1021,17 @@ external-secrets:
 
   # -- Any extra pod spec on the deployment
   podSpecExtra: {}
+
+# Vault-backed image pull secrets: one ClusterSecretStore + one ExternalSecret
+# per entry (task 4.1, gitlab-token-rotation). Empty by default.
+registryPullSecrets:
+  storeName: vault-gitlab-tokens
+  kvPath: gitlab/tokens/registry-token
+  registryHost: ""
+  registryUser: ""
+  vault:
+    server: ""
+    role: ""
+    serviceAccountName: ""
+    serviceAccountNamespace: ""
+  secrets: []
