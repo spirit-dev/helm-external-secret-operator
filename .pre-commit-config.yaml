@@ -53,7 +53,9 @@ repos:
           [
             "README.md.j2",
             "--exclude",
-            '\.git|\.tox|\.pytest_cache|README.md(?!.j2)',
+            '\.git|\.tox|\.pytest_cache|\.pi|(^|/)AGENTS\.md|README.md(?!.j2)',
+            "--add-toc-title=False",
+            "--add-horizontal-rules=False",
           ]
 
   # Markdown templating
