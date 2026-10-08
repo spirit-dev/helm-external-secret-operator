@@ -8,7 +8,9 @@ Helm chart deploying the [External Secrets Operator](https://external-secrets.io
 
 - `Chart.yaml` / `Chart.lock` / `values.yaml` — chart definition and defaults
 - `values.turingpi.yaml` — environment overrides (currently the only env)
-- `templates/` — rendered resources; `registry-secrets.yaml` today. `ClusterSecretStore` definitions will live here per environment, values-driven, once secret backends are chosen.
+- `templates/` — rendered resources, all values-driven per environment:
+  - `registry-secrets.yaml` — Vault-backed image pull secrets: one shared `ClusterSecretStore` + one `ExternalSecret` per `registryPullSecrets.secrets` entry
+  - `secret-syncs.yaml` — Vault-backed plain secrets: one `ExternalSecret` per `secretSyncs.secrets` entry, body templated by ESO at sync time; `storeName` reuses the shared store
 
 ## Local Contracts
 
