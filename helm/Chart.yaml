@@ -8,7 +8,7 @@ sources:
 dependencies:
   - name: external-secrets
     repository: https://charts.external-secrets.io
-    version: 2.13.0
+    version: 2.14.0
 
 type: application
 
@@ -16,7 +16,7 @@ type: application
 version: 2.11.0
 
 # renovate: datasource=github-releases depName=external-secrets/external-secrets
-appVersion: v2.13.0
+appVersion: v2.14.0
 
 keywords:
   - kubernetes
