@@ -16,6 +16,7 @@ Helm chart deploying the [External Secrets Operator](https://external-secrets.io
 
 - `helm/templates/` is excluded from `check-yaml` in pre-commit (templated YAML is not valid YAML).
 - Chart is installed via Argocd; `make dry-run|install` (from repo root) is for first-time/troubleshooting only, with `-f values.<ENV>.yaml`.
+- CRDs are applied with ArgoCD Server-Side Apply (`argocd.argoproj.io/sync-options: ServerSideApply=true` via `crds.annotations`) because they exceed the 256KB annotation limit under client-side apply. Keep this annotation when upgrading the subchart.
 
 ## Verification
 
