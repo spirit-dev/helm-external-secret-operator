@@ -1037,9 +1037,10 @@ registryPullSecrets:
   secrets: []
 
 # Vault-backed plain secrets via a values-driven ExternalSecret per entry.
-# Each entry fetches KV property `value` (from `kvPath`) through the shared
-# ClusterSecretStore and renders `secretKey` from the ESO template body in
-# `template` (the body may reference the fetched value as `.value`).
+# Each entry fetches KV property `property` (default `value`) from `kvPath`
+# through the shared ClusterSecretStore and renders `secretKey` from the ESO
+# template body in `template` (the body may reference the fetched value as
+# `.value`).
 # Example: feeds Renovate's RENOVATE_SECRETS env ({{ secrets.X }} templating)
 # without a literal token in values.
 secretSyncs:
@@ -1050,3 +1051,5 @@ secretSyncs:
   #    kvPath: gitlab/tokens/renovate-bot-2
   #    secretKey: RENOVATE_SECRETS
   #    template: '{"GITLAB_TOKEN":"{{ .value }}"}'
+  #    # KV field to read; defaults to `value` (what vault-put.sh writes)
+  #    property: REGISTRY_PASSWORD

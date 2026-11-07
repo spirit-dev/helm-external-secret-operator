@@ -10,7 +10,7 @@ Helm chart deploying the [External Secrets Operator](https://external-secrets.io
 - `values.turingpi.yaml` — environment overrides (currently the only env)
 - `templates/` — rendered resources, all values-driven per environment:
   - `registry-secrets.yaml` — Vault-backed image pull secrets: one shared `ClusterSecretStore` + one `ExternalSecret` per `registryPullSecrets.secrets` entry
-  - `secret-syncs.yaml` — Vault-backed plain secrets: one `ExternalSecret` per `secretSyncs.secrets` entry, body templated by ESO at sync time; `storeName` reuses the shared store
+  - `secret-syncs.yaml` — Vault-backed plain secrets: one `ExternalSecret` per `secretSyncs.secrets` entry, body templated by ESO at sync time; `storeName` reuses the shared store; each entry reads KV field `property` (default `value`, what `vault-put.sh` in gitlab-token-updater writes)
 
 ## Local Contracts
 
