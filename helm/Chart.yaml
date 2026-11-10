@@ -16,7 +16,7 @@ type: application
 version: 2.11.0
 
 # renovate: datasource=github-releases depName=external-secrets/external-secrets
-appVersion: v2.14.0
+appVersion: v2.15.0
 
 keywords:
   - kubernetes
