@@ -35,7 +35,7 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        args: ["-n"]
+        args: ["-n", "--baseline", ".secrets.baseline"]
         exclude: package.lock.json
 
   # GitLeaks
