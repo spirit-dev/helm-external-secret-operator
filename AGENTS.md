@@ -85,6 +85,9 @@ When the user requests a durable behavior change, record it here or in the relev
 
 - Argocd owns deployment. The `Makefile` is for one-time/first deployment or troubleshooting only. `install`/`dry-run` targets print `ARGOCD-OWNED` warning before running.
 - Pre-commit gates all commits: helm lint, hadolint, detect-secrets, gitleaks, markdownlint (excludes `.pi/`, `openspec/`), yaml checks (excludes `helm/templates/`), plus README templating. Commits to `master`/`main` are blocked — work on branches.
+- detect-secrets uses `.secrets.baseline` (checked in). CI must scan with `--baseline .secrets.baseline` before `detect-secrets audit` so known false positives
+  (e.g. docs prose mentioning `secret`) don't fail SAST. Regenerate with `detect-secrets scan -n > .secrets.baseline` only when intentionally absorbing new
+  findings; baseline must contain no real secrets.
 - Spec-driven work uses OpenSpec under `openspec/`; its `.pi/skills/` and prompts define that workflow.
 
 ## Child DOX Index

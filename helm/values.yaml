@@ -1053,3 +1053,13 @@ secretSyncs:
   #    template: '{"GITLAB_TOKEN":"{{ .value }}"}'
   #    # KV field to read; defaults to `value` (what vault-put.sh writes)
   #    property: REGISTRY_PASSWORD
+  #  Multi-key form: sync several KV fields of one record into distinct keys
+  #  (each key's template defaults to a plain copy of its provider value):
+  #  - name: homeassistant-config-git
+  #    namespace: homeassistant
+  #    kvPath: gitlab/tokens/homeassistant-config
+  #    keys:
+  #      - key: user
+  #        property: user
+  #      - key: token
+  #        property: value
