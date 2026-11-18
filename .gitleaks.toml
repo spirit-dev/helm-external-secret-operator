@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[allowlist]
+# detect-secrets baseline contains hashed secrets by design
+paths = ['''\.secrets\.baseline$''']
