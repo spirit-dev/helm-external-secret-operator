@@ -15,7 +15,11 @@ Helm chart deploying the [External Secrets Operator](https://external-secrets.io
     references `.value`; `property` selects the KV field, default `value` — what `vault-put.sh` in gitlab-token-updater writes) and multi-key (`keys` list
     syncing several KV fields of one record into distinct secret keys; ESO exposes provider values in the template body by secretKey, `missingkey=error`).
     `homeassistant-config-git` (ns `homeassistant`, keys `user`+`token`) is the multi-key consumer of the gitlab-token-updater-rotated
-    `gitlab/tokens/homeassistant-config` record.
+    `gitlab/tokens/homeassistant-config` record; `homeassistant-turingpi-home-assistant-prometheus-token` (ns `homeassistant`, key
+    `token`, KV `gitlab/homeassistant/prometheus-token`, manually rotated) backs the wrapper chart's HA ServiceMonitor — the wrapper
+    chart must not render its own copy of that ExternalSecret; `homeassistant-turingpi-home-assistant-secrets` (ns `homeassistant`,
+    keys `SCHLUTER_USERNAME`+`SCHLUTER_PASSWORD`, KV `gitlab/homeassistant/secrets`) backs the wrapper chart's HA container env
+    (!env_var in the config repo's configuration.yaml) — also not to be rendered by the wrapper chart.
 
 ## Local Contracts
 
