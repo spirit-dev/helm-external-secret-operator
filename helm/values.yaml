@@ -1045,12 +1045,24 @@ registryPullSecrets:
 # without a literal token in values.
 secretSyncs:
   storeName: ""
+  # Dedicated ClusterSecretStores rendered by this chart (each with its own
+  # Vault KV mount); entries reference them via per-secret `storeName`.
+  stores: []
+  #  - name: homeassistant
+  #    vault:
+  #      server: http://vault:8200
+  #      path: homeassistant       # Vault KV mount; entry kvPaths are relative to it
+  #      role: external-secrets
+  #      serviceAccountName: external-secret-operator
+  #      serviceAccountNamespace: kube-system
   secrets: []
   #  - name: renovate-token
   #    namespace: gitlab-next
   #    kvPath: gitlab/tokens/renovate-bot-2
   #    secretKey: RENOVATE_SECRETS
   #    template: '{"GITLAB_TOKEN":"{{ .value }}"}'
+  #    # Optional per-secret store override (defaults to secretSyncs.storeName)
+  #    storeName: homeassistant
   #    # KV field to read; defaults to `value` (what vault-put.sh writes)
   #    property: REGISTRY_PASSWORD
   #  Multi-key form: sync several KV fields of one record into distinct keys
